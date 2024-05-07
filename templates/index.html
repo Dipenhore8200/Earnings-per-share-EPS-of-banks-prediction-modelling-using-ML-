@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EPS Prediction by Machine Learning</title>
+  <style>
+body {
+  background-color: #e0f2f1; /* Light blue background */
+  font-family: Open Sans, sans-serif; 
+  margin: 0; /* Reset default margins */
+  padding: 20px; /* Add spacing around the content */
+}
+
+h1 {
+  color: #3498db; /* Primary - Blue */
+  font-family: Montserrat, sans-serif; 
+  font-size: 2em;
+  margin-bottom: 1em; 
+  text-align: center; /* Center the heading */
+}
+
+.form-container {
+  background-color: transparent; /* Set background to transparent */
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px; 
+  margin: 40px auto; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Keep the subtle shadow */
+}
+label {
+  color: #2c3e50; 
+  display: block;
+  margin-bottom: 0.5em; 
+}
+
+input[type="text"],
+input[type="submit"] {
+  padding: 0.8em 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  width: 100%; /* Make input fields take full container width */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+input[type="submit"] {
+  background-color: #f1c40f;
+  color: #fff; 
+  cursor: pointer;
+  border: none; /* Remove default button border */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+input[type="submit"]:hover {
+  background-color: #e67e22; /* Darker orange on hover */
+}
+
+.result-container {
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
+
+</head>
+<body>
+
+  <h1>EPS Prediction by Machine Learning</h1>
+
+  <div class="form-container">
+    <form action="/predict" method="POST">
+
+      <label for="ROCE">ROCE (%):</label>
+      <input type="number" id="ROCE" name="ROCE" required><br>
+
+      <label for="CASA">CASA (%):</label>
+      <input type="number" id="CASA" name="CASA" required><br>
+
+      <label for="Return_on_Equity">Return on Equity / Networth (%):</label>
+      <input type="number" id="Return_on_Equity" name="Return_on_Equity" required><br>
+
+      <label for="Non_Interest_Income">Non-Interest Income/Total Assets (%):</label>
+      <input type="number" id="Non_Interest_Income" name="Non-Interest_Income" required><br>
+
+      <label for="Operating_Profit">Operating Profit/Total Assets (%):</label>
+      <input type="number" id="Operating_Profit" name="Operating_Profit" required><br>
+
+      <label for="Operating_Expenses">Operating Expenses/Total Assets (%):</label>
+      <input type="number" id="Operating_Expenses" name="Operating_Expenses" required><br>
+
+      <label for="Interest_Expenses">Interest Expenses/Total Assets (%):</label>
+      <input type="number" id="Interest_Expenses" name="Interest_Expenses" required><br>
+
+      <label for="Face_value">Face value:</label>
+      <input type="number" id="Face_value" name="Face_value" required><br><br>
+
+      <input type="submit" value="Predict using ML">
+    </form>
+  </div>
+
+  <div class="result-container">
+    <p style="font-size: 1.2em; font-weight: bold;">EPS Predicted: <span id="result">{{ result }}</span></p>
+  </div>
+
+</body>
+</html>
